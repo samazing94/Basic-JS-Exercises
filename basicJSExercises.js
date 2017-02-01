@@ -107,12 +107,15 @@ HINT: Use join(), split() and sort() fucntions
  --------------------------- */
 
 function alphabetic_order(word) {
-  return "rearranged word";
+  
+  var splits = word.split("");
+  var a_char = splits.sort();
+  return a_char.join("");
 }
 
 console.log("Alphabetic Order:");
 /* Uncomment the following to check */
-  // console.log(alphabetic_order("webmaster"));
+  console.log(alphabetic_order("webmaster"));
 
 
 
@@ -132,12 +135,32 @@ a occurs 5 times
  --------------------------- */
 
 function most_frequent(arr) {
-  console.log("Most frequently occuring item in arr");
+	var most_freq = 1;
+	var f = 0;
+	var item;
+	for (var i = 0; i < arr.length; i++)
+	{
+		for (var j = 0; j < arr.length; j++)
+		{
+			if (arr[i] == arr[j+1])
+			{
+				f++;
+			}
+			if (most_freq  < f)
+			{
+				most_freq = f;
+				item = arr[i];
+			}
+		}
+		f = 0;
+	}
+
+  console.log( item + " occurs " + most_freq + " times");
 }
 
 console.log("Most Frequent Item:");
 /* Uncomment the following to check */
-  // most_frequent([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]);
+   most_frequent([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]);
 
 
 
@@ -174,12 +197,27 @@ Output:
  --------------------------- */
 
 function fizzbuzz(n) {
-  console.log("Print the Fizz, Buzz and FizzBuzz numbers in 1 to n");
+
+	for(var i = 0; i < n; i++)
+	{
+		if(i%5 === 0 && i%3 === 0){
+			console.log("FizzBuzz");
+		}
+		else if (i % 3 === 0) {
+			console.log("Fizz");
+		}
+		else if (i % 5 === 0) {
+			console.log("Buzz")
+		}
+		else {
+			console.log(i);
+		}
+	}
 }
 
 console.log("FizzBuzz:");
 /* Uncomment the following to check */
-  // fizzbuzz(100);
+   fizzbuzz(100);
 
 
 
@@ -198,11 +236,18 @@ HINT: Use Math.ceil() and Math.random()
 
 function guessing_game(guess) {
   // Get a random integer from 1 to 10 inclusive
-  console.log("matched or unmatched?");
+  var num = Math.ceil(Math.random() * 10);
+  if (guess == num)
+  {
+  	console.log("Good Work");
+  }
+  else {
+  	console.log("Not matched");
+  }
 }
 
 console.log("Guessing Game:");
 /* Uncomment the following to check */
-  // var guess = prompt('Guess the number between 1 and 10 inclusive');
-  // console.log("User guessed: "+ guess);
-  // guessing_game(guess);
+   var guess = prompt('Guess the number between 1 and 10 inclusive');
+   console.log("User guessed: "+ guess);
+   guessing_game(guess);
